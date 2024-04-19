@@ -1,0 +1,7 @@
+{
+    "username": "root",
+    "password": "13032003",
+    "dbname": "femdb",
+    "hostname": "localhost",
+    "port": 3306
+}
