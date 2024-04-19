@@ -24,11 +24,13 @@ cd feg-web-drawer
 
 ## System and Utility Requirements
 Operating System: Compatible with any operating system that supports Docker.
+
 Libraries: Required for building the application are the standard Go library and the following additional libraries:
 - SVG generation: "github.com/ajstarks/svgo"
 - Go MySQL driver: "github.com/go-sql-driver/mysql"
 
 Docker: For building and running the application in any environment.
+
 Git: For version control management.
 
 ## Additional Information
