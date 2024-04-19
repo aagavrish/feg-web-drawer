@@ -23,15 +23,12 @@ cd feg-web-drawer
 3. Run the `./build/run.sh` script to build and start the Docker container. This script will first build a Docker image from the application, and then run it in a new container.
 
 ## System and Utility Requirements
-Operating System: Compatible with any operating system that supports Docker.
-
-Libraries: Required for building the application are the standard Go library and the following additional libraries:
-- SVG generation: "github.com/ajstarks/svgo"
-- Go MySQL driver: "github.com/go-sql-driver/mysql"
-
-Docker: For building and running the application in any environment.
-
-Git: For version control management.
+- **Operating System:** Compatible with any operating system that supports Docker.
+- **Libraries:** Required for building the application are the standard Go library and the following additional libraries:
+    1. SVG generation: "github.com/ajstarks/svgo"
+    2. Go MySQL driver: "github.com/go-sql-driver/mysql"
+- **Docker:** For building and running the application in any environment.
+- **Git**: For version control management.
 
 ## Additional Information
 
