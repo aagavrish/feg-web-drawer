@@ -11,30 +11,6 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-type DatabaseConfig struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-	DBname   string `json:"dbname"`
-	Hostname string `json:"hostname"`
-	Port     int    `json:"port"`
-}
-
-type ServerConfig struct {
-	Hostname string `json:"hostname"`
-	Port     int    `json:"port"`
-}
-
-type Node struct {
-	ID int16
-	X  float64
-	Y  float64
-}
-
-type Element struct {
-	ID      int16
-	NodesID []int16
-}
-
 func LoadConfig(path string, config interface{}) error {
 	jsonFile, err := os.ReadFile(path)
 	if err != nil {
