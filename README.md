@@ -3,6 +3,8 @@
 ## Project Overview
 The goal of this project is to develop a web application for drawing a finite element grid based on the data from the `nodes` and `elements` tables of the `femdb` database.
 
+![Example Image](misc/example.jpg)
+
 ### Key Features
 - **HTTP**: The application uses the HTTP protocol for communication between the client and the server. This allows the application to be accessed through a web browser.
 - **Structured Programming**: The code is written using structured programming principles for better readability and maintainability.
