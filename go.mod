@@ -1,4 +1,4 @@
-module femdb_web_drawer
+module web_drawer
 
 go 1.18
 

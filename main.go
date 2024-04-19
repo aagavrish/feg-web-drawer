@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"web_drawer/utils"
 )
 
 const (
@@ -15,8 +16,8 @@ const (
 )
 
 var (
-	dbConfig     DatabaseConfig
-	serverConfig ServerConfig
+	dbConfig     utils.DatabaseConfig
+	serverConfig utils.ServerConfig
 	sqlFiles     map[string]string
 	dsn          string
 )
@@ -26,25 +27,25 @@ type PageData struct {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	database, err := ConnectToDatabase(dsn)
+	database, err := utils.ConnectToDatabase(dsn)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer database.Close()
 
-	nodes, err := GetNodes(database, sqlFiles["select_nodes.sql"])
+	nodes, err := utils.GetNodes(database, sqlFiles["select_nodes.sql"])
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	elements, err := GetElements(database, sqlFiles["select_elements.sql"])
+	elements, err := utils.GetElements(database, sqlFiles["select_elements.sql"])
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	var buffer bytes.Buffer
 
-	if err := CreateSVG(nodes, elements, &buffer); err != nil {
+	if err := utils.CreateSVG(nodes, elements, &buffer); err != nil {
 		log.Fatal(err)
 	}
 
@@ -66,16 +67,16 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	var err error
 
-	if err = LoadConfig(databaseConfigPath, &dbConfig); err != nil {
+	if err = utils.LoadConfig(databaseConfigPath, &dbConfig); err != nil {
 		log.Fatal(err)
 	}
 
-	if err = LoadConfig(serverConfigPath, &serverConfig); err != nil {
+	if err = utils.LoadConfig(serverConfigPath, &serverConfig); err != nil {
 		log.Fatal(err)
 	}
 
-	dsn = CreateDataSourceName(dbConfig)
-	sqlFiles, err = LoadSqlFiles(sqlPath)
+	dsn = utils.CreateDataSourceName(dbConfig)
+	sqlFiles, err = utils.LoadSqlFiles(sqlPath)
 	if err != nil {
 		log.Fatal(err)
 	}
