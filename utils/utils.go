@@ -106,11 +106,14 @@ func GetElements(database *sql.DB, sql string) ([]Element, error) {
 
 func drawElements(canvas *svg.SVG, elements []Element, nodes []Node, scale int) {
 	for _, element := range elements {
+		x := make([]int, len(element.NodesID))
+		y := make([]int, len(element.NodesID))
 		for i := 0; i < len(element.NodesID); i++ {
-			startNode := nodes[element.NodesID[i]-1]
-			endNode := nodes[element.NodesID[(i+1)%len(element.NodesID)]-1]
-			canvas.Line(int(startNode.X)*scale, -int(startNode.Y)*scale, int(endNode.X)*scale, -int(endNode.Y)*scale, `style="stroke:grey;stroke-width:3"`)
+			node := nodes[element.NodesID[i]-1]
+			x[i] = int(node.X) * scale
+			y[i] = -int(node.Y) * scale
 		}
+		canvas.Polygon(x, y, `style="stroke:grey;stroke-width:3;fill:#F0F0F0"`)
 	}
 }
 
